@@ -145,9 +145,13 @@ public class PlayerController : MonoBehaviour
         }
         bodyParts.Add(spawnedBodyPart);
         spawnedBodyPart.transform.DOScale(bodyParts[0].transform.localScale.x, .4f).From(0).WaitForCompletion();
-        SoundManager.instance.PlayAudio("Eat");
-        eatingParticle.Play();
-        if (bodyParts.Count > 1) EventManager.GainScore?.Invoke();
+        if (bodyParts.Count > 1)
+        {
+            Camera.main.transform.DOPunchRotation(new Vector3(.4f,.4f,.4f),.3f);
+            SoundManager.instance.PlayAudio("Eat");
+            eatingParticle.Play();
+            EventManager.GainScore?.Invoke();
+        }
     }
 
     private void SnakeShrink()
@@ -155,6 +159,7 @@ public class PlayerController : MonoBehaviour
         EventManager.ShowGameOverPanel?.Invoke();
         EventManager.SetGameState?.Invoke(GameState.GameOver);
         SoundManager.instance.PlayAudio("GameOver");
+        Camera.main.transform.DOPunchPosition(new Vector3(1f, 1f, 1f), .5f);
         StartCoroutine(ShrinkPart());
     }
 
