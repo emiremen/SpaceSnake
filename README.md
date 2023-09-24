@@ -1,3 +1,3 @@
 # SpaceSnake
 
-![screenshots](https://github.com/emiremen/SpaceSnake/blob/main/screenshots/ss1.png)
+![screenshots](https://github.com/emiremen/SpaceSnake/blob/main/Screenshot/ss1.png)
